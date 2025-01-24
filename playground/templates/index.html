@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block title %} Home {% endblock %} 
+{% block content %}
+<div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+  <h2 class="mb-12 text-xl text-center">Newest Items</h2>
+
+  <div class="col-span-3">
+        <div class="grid grid-cols-3 gap-x-3">
+            {% for item in items %}
+            <div>
+            <a href="{% url 'item:detail' item.id %}">
+                <div class="h-2/5">
+                <img
+                    src="{{ item.image.url }}"
+                    alt=""
+                    class="h-full w-full rounded-t-xl"
+                />
+                </div>
+
+                <div class="p-6 bg-white rounded-b-xl">
+                <h2 class="text-2xl">{{ item.name }}</h2>
+                <strong class="text-gray-500">Price: <strong class="text-green-800">{{ item.price }}</strong></strong>
+                </div>
+            </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
